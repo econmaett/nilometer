@@ -9,7 +9,6 @@ nilometer <- readxl::read_excel(path = "RodaNilometerData.xlsx", skip = 10) |>
 
 write_csv(x = nilometer, file = "nilometer.csv")
 
-View(nilometer) 
 
 ## plot ----
 nilometer_caption <- "D. Koutsoyiannis, Hydrology and Change, Hydrological Sciences Journal, 58 (6), 1177–1197, doi:10.1080/02626667.2013.804626, 2013."
