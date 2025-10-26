@@ -9,14 +9,14 @@ nilometer <- readxl::read_excel(path = "RodaNilometerData.xlsx", skip = 10) |>
 
 write_csv(x = nilometer, file = "nilometer.csv")
 
-
 ## plot ----
 nilometer_caption <- "D. Koutsoyiannis, Hydrology and Change, Hydrological Sciences Journal, 58 (6), 1177–1197, doi:10.1080/02626667.2013.804626, 2013."
 
-p <- ggplot(data = nilometer, mapping = aes(x = year)) +
-  geom_line(mapping = aes(y = min_level), linewidth = 0.5) +
-  geom_point(mapping = aes(y = min_level), size = 1.5) +
-  scale_x_continuous(breaks = seq(600, 1950, 150), limits = c(600, 1950)) +
+p <- ggplot(data = nilometer, mapping = aes(x = year, y = min_level)) +
+  geom_line(linewidth = 0.5, colour = "gray") +
+  geom_point(size = 0.75) +
+  # geom_smooth(method = "loess", formula = "y ~ x", se = TRUE, colour = "#00b4d8", fill = "#00b4d8") +
+  scale_x_continuous(breaks = seq(600, 1950, 50), limits = c(600, 1950)) +
   scale_y_continuous(breaks = seq(8, 16, 2), limits = c(8, 16)) +
   labs(
     title = "Annual minimum water levels of the river Nile, 622-1921",
@@ -24,7 +24,8 @@ p <- ggplot(data = nilometer, mapping = aes(x = year)) +
     x = NULL, y = NULL,
     caption = str_wrap(nilometer_caption)
   ) +
-  theme_minimal(base_size = 8)
+  theme_minimal(base_size = 8) +
+  theme(panel.grid.minor = element_blank())
 
 print(p)
 
