@@ -15,7 +15,7 @@ nilometer_caption <- "D. Koutsoyiannis, Hydrology and Change, Hydrological Scien
 
 p <- ggplot(data = nilometer, mapping = aes(x = year)) +
   geom_line(mapping = aes(y = min_level), linewidth = 0.25) +
-  geom_point(mapping = aes(y = min_level), size = 0.25) +
+  geom_point(mapping = aes(y = min_level), size = 0.5) +
   scale_x_continuous(breaks = seq(600, 1950, 150), limits = c(600, 1950)) +
   scale_y_continuous(breaks = seq(8, 16, 2), limits = c(8, 16)) +
   labs(
